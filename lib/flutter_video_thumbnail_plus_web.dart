@@ -1,15 +1,8 @@
-// In order to *not* need this ignore, consider extracting the "web" version
-// of your plugin as a separate package, instead of inlining it in the same
-// package as the core of your plugin.
-// ignore: avoid_web_libraries_in_flutter
-
+import 'dart:convert';
+import 'dart:html' as html;
 import 'package:flutter/foundation.dart';
-import 'package:flutter_video_thumbnail_plus/platform_manager/platform_mobile.dart'
-    if (dart.library.html) 'package:flutter_video_thumbnail_plus/platform_manager/platform_web.dart'
-    as platform;
+import 'package:flutter_video_thumbnail_plus/flutter_video_thumbnail_plus_platform_interface.dart';
 import 'package:flutter_web_plugins/flutter_web_plugins.dart';
-
-import 'flutter_video_thumbnail_plus_platform_interface.dart';
 
 /// A web implementation of the FlutterVideoThumbnailPlusPlatform of the FlutterVideoThumbnailPlus plugin.
 class FlutterVideoThumbnailPlusWeb extends FlutterVideoThumbnailPlusPlatform {
@@ -25,9 +18,42 @@ class FlutterVideoThumbnailPlusWeb extends FlutterVideoThumbnailPlusPlatform {
     required Uint8List videoBytes,
     num quality = 100,
   }) async {
-    return await platform.PlatformManager().thumbnailDataWeb(
-      videoBytes: videoBytes,
-      quality: quality,
-    );
+    assert(videoBytes.isNotEmpty,
+        'Error: Video byte array is empty. Please ensure the video file is loaded correctly.');
+    var thumbnailBytes = Uint8List(0);
+    try {
+      final blob = html.Blob([videoBytes], 'video/mp4');
+      final url = html.Url.createObjectUrlFromBlob(blob);
+      final videoElement = html.VideoElement()
+        ..src = url
+        ..autoplay = false
+        ..controls = false
+        ..muted = true
+        ..style.display = 'none';
+
+      await videoElement.play();
+      return Future.delayed(
+        const Duration(seconds: 1),
+        () async {
+          videoElement.pause();
+          final canvas = html.CanvasElement(
+            width: videoElement.videoWidth,
+            height: videoElement.videoHeight,
+          );
+          final context = canvas.context2D;
+          context.drawImage(videoElement, 0, 0);
+          final thumbnailUrl = canvas.toDataUrl('image/jpeg', quality);
+          html.Url.revokeObjectUrl(url);
+
+          // Convert data URL to bytes
+          final byteString = thumbnailUrl.split(',').last;
+          final bytes = base64.decode(byteString);
+          thumbnailBytes = Uint8List.fromList(bytes);
+          return thumbnailBytes;
+        },
+      );
+    } catch (e) {
+      throw Exception('Please Provide Valid Video Bytes as Uint8List: $e');
+    }
   }
 }
