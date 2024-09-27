@@ -66,7 +66,6 @@ class _MyAppState extends State<MyApp> {
               ] else if (thumbanilBytes != null) ...[
                 Image.memory(
                   thumbanilBytes ?? Uint8List(0),
-                  height: 200,
                 )
               ]
             ],

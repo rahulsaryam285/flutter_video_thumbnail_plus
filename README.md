@@ -1,15 +1,20 @@
-# flutter_video_thumbnail_plus
+# Flutter Video Thumbnail Plus
 
-A new Flutter plugin project.
+[![pub package](https://img.shields.io/pub/v/flutter_video_thumbnail_plus.svg)](https://pub.dev/packages/flutter_video_thumbnail_plus)
 
-## Getting Started
+A Flutter plugin for generating video thumbnails from local and network videos.
 
-This project is a starting point for a Flutter
-[plug-in package](https://flutter.dev/to/develop-plugins),
-a specialized package that includes platform-specific implementation code for
-Android and/or iOS.
+## Features
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+* Generate thumbnails from local video files.
+* Generate thumbnails from network videos.
+* Customize thumbnail size, quality, and format.
+* Get thumbnail as a file path or `Uint8List`.
 
+## Installation
+
+Add this to your package's `pubspec.yaml` file:
+
+```yaml
+dependencies:
+  flutter_video_thumbnail_plus: ^<latest_version>
