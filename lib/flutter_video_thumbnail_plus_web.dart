@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:html' as html;
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter_video_thumbnail_plus/flutter_video_thumbnail_plus_platform_interface.dart';
 import 'package:flutter_web_plugins/flutter_web_plugins.dart';
