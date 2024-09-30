@@ -98,14 +98,18 @@ See the [example app](https://github.com/rahulsaryam285/flutter_video_thumbnail_
 
 ## Author
 
-👤 **Rahul Saryam** <br />
-👤 **Rajkumar Gahane**
+ **Rahul Saryam**  ||
+ **Rajkumar Gahane**
+
+<a href="https://github.com/rahulsaryam285/flutter_video_thumbnail_plus/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=rahulsaryam285/flutter_video_thumbnail_plus" />
+</a>
 
 ## Support this project
 
 Please ⭐️ this repository if this project helped you!
 
-If you find any bugs or issues while using the plugin, please register an issues on GitHub. You can also contact us at rahulsaryam285@gmail.com and rajkumar@gmail.com.
+If you find any bugs or issues while using the plugin, please register an issues on GitHub. You can also contact us at rahulsaryam285@gmail.com and rajkumargahane2001@gmail.com.
 
 <a href="https://www.buymeacoffee.com/albemala" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" ></a>
 
