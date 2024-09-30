@@ -27,7 +27,7 @@ Add the following dependency to your `pubspec.yaml` file:
 
 ```yaml
 dependencies:
-  flutter_video_thumbnail_plus: ^1.0.0
+  flutter_video_thumbnail_plus: ^1.0.1
 ```
 
 Then, run `flutter pub get` to install the plugin.
@@ -98,8 +98,8 @@ See the [example app](https://github.com/rahulsaryam285/flutter_video_thumbnail_
 
 ## Author
 
- **Rahul Saryam**  ||
- **Rajkumar Gahane**
+**Rahul Saryam** ||
+**Rajkumar Gahane**
 
 <a href="https://github.com/rahulsaryam285/flutter_video_thumbnail_plus/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=rahulsaryam285/flutter_video_thumbnail_plus" />
