@@ -1,6 +1,6 @@
 name: flutter_video_thumbnail_plus
 description: "A Flutter package for generating thumbnails from video files and byte arrays, supporting various image formats and customization options."
-version: 1.0.1
+version: 1.0.2
 homepage: https://github.com/rahulsaryam285/flutter_video_thumbnail_plus
 
 environment:

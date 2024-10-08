@@ -111,8 +111,6 @@ Please ⭐️ this repository if this project helped you!
 
 If you find any bugs or issues while using the plugin, please register an issues on GitHub. You can also contact us at rahulsaryam285@gmail.com and rajkumargahane2001@gmail.com.
 
-<a href="https://www.buymeacoffee.com/albemala" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" ></a>
-
 ## Contributing
 
 Contributions are welcome! If you'd like to contribute to this plugin, please fork the repository and submit a pull request.
