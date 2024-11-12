@@ -173,10 +173,10 @@
       "name": "flutter_video_thumbnail_plus",
       "rootUri": "../",
       "packageUri": "lib/",
-      "languageVersion": "3.5"
+      "languageVersion": "2.16"
     }
   ],
-  "generated": "2024-10-08T08:10:42.298129Z",
+  "generated": "2024-11-12T09:07:01.771052Z",
   "generator": "pub",
   "generatorVersion": "3.5.3",
   "flutterRoot": "file:///home/rajkumargahane/snap/flutter/common/flutter",
