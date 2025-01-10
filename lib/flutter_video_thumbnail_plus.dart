@@ -1,8 +1,12 @@
 import 'dart:typed_data';
+
+import 'package:flutter_video_thumbnail_plus/enum.dart';
 import 'package:flutter_video_thumbnail_plus/flutter_video_thumbnail_plus_mobile_platform.dart'
     if (dart.library.html) 'package:flutter_video_thumbnail_plus/flutter_video_thumbnail_plus_web.dart'
     as platform;
 import 'package:flutter_video_thumbnail_plus/flutter_video_thumbnail_plus_platform_interface.dart';
+
+export 'enum.dart';
 
 /// A utility class for generating thumbnails from video files and byte arrays.
 ///

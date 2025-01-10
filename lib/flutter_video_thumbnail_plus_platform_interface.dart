@@ -1,8 +1,7 @@
 import 'dart:typed_data';
+import 'package:flutter_video_thumbnail_plus/enum.dart';
 import 'package:flutter_video_thumbnail_plus/flutter_video_thumbnail_plus_method_channel.dart';
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
-
-enum ImageFormat { jpeg, png, webp }
 
 abstract class FlutterVideoThumbnailPlusPlatform extends PlatformInterface {
   /// Constructs a FlutterVideoThumbnailPlusPlatform.

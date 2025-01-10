@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_video_thumbnail_plus/enum.dart';
 import 'package:flutter_video_thumbnail_plus/flutter_video_thumbnail_plus_platform_interface.dart';
 
 /// An implementation of [FlutterVideoThumbnailPlusPlatform] that uses method channels.
