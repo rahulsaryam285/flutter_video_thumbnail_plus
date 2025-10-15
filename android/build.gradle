@@ -8,7 +8,7 @@ buildscript {
     }
 
     dependencies {
-        classpath("com.android.tools.build:gradle:8.1.0")
+        classpath("com.android.tools.build:gradle:8.6.0")
     }
 }
 
@@ -29,12 +29,23 @@ android {
     compileSdk = 34
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
     }
 
     defaultConfig {
         minSdk = 21
+    }
+
+    lintOptions {
+        checkReleaseBuilds true
+        abortOnError true
+        warningsAsErrors true
+        disable 'UnusedResources'
+    }
+
+    tasks.withType(JavaCompile) {
+        options.compilerArgs += ['-Xlint:deprecation', '-Xlint:unchecked', '-Werror']
     }
 
     dependencies {
