@@ -3,7 +3,7 @@
   "packages": [
     {
       "name": "async",
-      "rootUri": "file:///Users/rajkumar/.pub-cache/hosted/pub.dev/async-2.13.0",
+      "rootUri": "file:///Users/rajkumar/.pub-cache/hosted/pub.dev/async-2.13.1",
       "packageUri": "lib/",
       "languageVersion": "3.4"
     },
@@ -81,7 +81,7 @@
     },
     {
       "name": "lints",
-      "rootUri": "file:///Users/rajkumar/.pub-cache/hosted/pub.dev/lints-6.0.0",
+      "rootUri": "file:///Users/rajkumar/.pub-cache/hosted/pub.dev/lints-6.1.0",
       "packageUri": "lib/",
       "languageVersion": "3.8"
     },
@@ -99,9 +99,9 @@
     },
     {
       "name": "meta",
-      "rootUri": "file:///Users/rajkumar/.pub-cache/hosted/pub.dev/meta-1.16.0",
+      "rootUri": "file:///Users/rajkumar/.pub-cache/hosted/pub.dev/meta-1.17.0",
       "packageUri": "lib/",
-      "languageVersion": "2.12"
+      "languageVersion": "3.5"
     },
     {
       "name": "path",
@@ -123,7 +123,7 @@
     },
     {
       "name": "source_span",
-      "rootUri": "file:///Users/rajkumar/.pub-cache/hosted/pub.dev/source_span-1.10.1",
+      "rootUri": "file:///Users/rajkumar/.pub-cache/hosted/pub.dev/source_span-1.10.2",
       "packageUri": "lib/",
       "languageVersion": "3.1"
     },
@@ -153,7 +153,7 @@
     },
     {
       "name": "test_api",
-      "rootUri": "file:///Users/rajkumar/.pub-cache/hosted/pub.dev/test_api-0.7.6",
+      "rootUri": "file:///Users/rajkumar/.pub-cache/hosted/pub.dev/test_api-0.7.7",
       "packageUri": "lib/",
       "languageVersion": "3.5"
     },
@@ -165,9 +165,15 @@
     },
     {
       "name": "vm_service",
-      "rootUri": "file:///Users/rajkumar/.pub-cache/hosted/pub.dev/vm_service-15.0.2",
+      "rootUri": "file:///Users/rajkumar/.pub-cache/hosted/pub.dev/vm_service-15.1.0",
       "packageUri": "lib/",
       "languageVersion": "3.5"
+    },
+    {
+      "name": "web",
+      "rootUri": "file:///Users/rajkumar/.pub-cache/hosted/pub.dev/web-1.1.1",
+      "packageUri": "lib/",
+      "languageVersion": "3.4"
     },
     {
       "name": "flutter_video_thumbnail_plus",
@@ -177,8 +183,8 @@
     }
   ],
   "generator": "pub",
-  "generatorVersion": "3.9.0",
+  "generatorVersion": "3.10.4",
   "flutterRoot": "file:///Users/rajkumar/Devloper/flutter",
-  "flutterVersion": "3.35.1",
+  "flutterVersion": "3.38.5",
   "pubCache": "file:///Users/rajkumar/.pub-cache"
 }

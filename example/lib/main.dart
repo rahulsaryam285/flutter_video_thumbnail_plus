@@ -21,38 +21,57 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   // Platform messages are asynchronous, so we initialize in an async method.
 
+  final GlobalKey<ScaffoldMessengerState> _scaffoldMessengerKey =
+      GlobalKey<ScaffoldMessengerState>();
+
   String? thumbnail;
   Uint8List? thumbanilBytes;
 
   bool isLoading = false;
 
   Future<void> getVideoFile() async {
-    setState(() {
-      isLoading = true;
-    });
-    if (kIsWeb) {
-      final files = await FilePicker.platform.pickFiles();
+    setState(() => isLoading = true);
+    try {
+      if (kIsWeb || Platform.isMacOS) {
+        final files = await FilePicker.platform.pickFiles();
 
-      if (files != null && files.files.isNotEmpty) {
-        thumbanilBytes = await FlutterVideoThumbnailPlus.thumbnailDataWeb(
-          videoBytes: files.files.first.bytes ?? Uint8List(0),
+        if (files != null && files.files.isNotEmpty) {
+          if (kIsWeb) {
+            thumbanilBytes = await FlutterVideoThumbnailPlus.thumbnailDataWeb(
+              videoBytes: files.files.first.bytes ?? Uint8List(0),
+            );
+          } else {
+            final selectedPath = files.files.first.path ?? '';
+            if (selectedPath.isNotEmpty) {
+              thumbnail = await FlutterVideoThumbnailPlus.thumbnailFile(
+                video: selectedPath,
+                imageFormat: ImageFormat.png,
+              );
+            }
+          }
+        }
+      } else {
+        final file = await ImagePicker().pickVideo(source: ImageSource.gallery);
+        thumbnail = await FlutterVideoThumbnailPlus.thumbnailFile(
+          video: file?.path ?? '',
+          imageFormat: ImageFormat.png,
         );
       }
-    } else {
-      final file = await ImagePicker().pickVideo(source: ImageSource.gallery);
-      thumbnail = await FlutterVideoThumbnailPlus.thumbnailFile(
-        video: file?.path ?? '',
-        imageFormat: ImageFormat.png,
+    } catch (error) {
+      _scaffoldMessengerKey.currentState?.showSnackBar(
+        SnackBar(content: Text('$error')),
       );
+    } finally {
+      if (mounted) {
+        setState(() => isLoading = false);
+      }
     }
-    setState(() {
-      isLoading = false;
-    });
   }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      scaffoldMessengerKey: _scaffoldMessengerKey,
       home: Scaffold(
         appBar: AppBar(
           title: const Text('Plugin example app'),
@@ -73,14 +92,20 @@ class _MyAppState extends State<MyApp> {
                           : Text('Running on: \n$thumbnail'),
                     ),
                     if (thumbnail != null && !kIsWeb) ...[
-                      Image.file(
-                        File(thumbnail ?? ''),
-                        height: 200,
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.5,
+                        width: MediaQuery.of(context).size.width * 0.5,
+                        child: Image.file(
+                          File(thumbnail ?? ''),
+                        ),
                       ),
                     ] else if (thumbanilBytes != null) ...[
-                      Image.memory(
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.5,
+                        width: MediaQuery.of(context).size.width * 0.5,
+                        child: Image.memory(
                         thumbanilBytes ?? Uint8List(0),
-                      )
+                      )),
                     ],
                     if (thumbanilBytes != null || thumbnail != null) ...[
                       SizedBox(height: 10),
