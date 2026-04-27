@@ -34,6 +34,8 @@ flutter:
         pluginClass: FlutterVideoThumbnailPlusPlugin
       macos:
         pluginClass: FlutterVideoThumbnailPlusPlugin
+      windows:
+        pluginClass: FlutterVideoThumbnailPlusPluginCApi
       web:
         pluginClass: FlutterVideoThumbnailPlusWeb
         fileName: flutter_video_thumbnail_plus_web.dart
