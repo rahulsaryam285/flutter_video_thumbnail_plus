@@ -45,7 +45,7 @@ class _MyAppState extends State<MyApp> {
             if (selectedPath.isNotEmpty) {
               thumbnail = await FlutterVideoThumbnailPlus.thumbnailFile(
                 video: selectedPath,
-                imageFormat: ImageFormat.png,
+                imageFormat: ImageFormat.webp,
               );
             }
           }
