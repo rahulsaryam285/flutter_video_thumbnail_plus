@@ -11,6 +11,9 @@
 #include <propvarutil.h>
 #include <shlwapi.h>
 #include <wincodec.h>
+#ifndef NOMINMAX
+#define NOMINMAX
+#endif
 #include <windows.h>
 #include <wrl/client.h>
 
@@ -23,6 +26,13 @@
 #include <sstream>
 #include <string>
 #include <vector>
+
+#ifdef min
+#undef min
+#endif
+#ifdef max
+#undef max
+#endif
 
 namespace flutter_video_thumbnail_plus {
 
@@ -125,8 +135,20 @@ std::optional<std::vector<uint8_t>> GenerateThumbnailData(
     int time_ms,
     int quality,
     std::string* error_message) {
+  ComPtr<IMFAttributes> reader_attributes;
+  HRESULT hr = MFCreateAttributes(&reader_attributes, 1);
+  if (FAILED(hr)) {
+    *error_message = "Cannot create source reader attributes: " + HResultToString(hr);
+    return std::nullopt;
+  }
+  hr = reader_attributes->SetUINT32(MF_SOURCE_READER_ENABLE_VIDEO_PROCESSING, TRUE);
+  if (FAILED(hr)) {
+    *error_message = "Cannot enable source reader video processing: " + HResultToString(hr);
+    return std::nullopt;
+  }
+
   ComPtr<IMFSourceReader> reader;
-  HRESULT hr = MFCreateSourceReaderFromURL(video_path.c_str(), nullptr, &reader);
+  hr = MFCreateSourceReaderFromURL(video_path.c_str(), reader_attributes.Get(), &reader);
   if (FAILED(hr)) {
     *error_message = "Cannot open video source: " + HResultToString(hr);
     return std::nullopt;
@@ -245,7 +267,9 @@ std::optional<std::vector<uint8_t>> GenerateThumbnailData(
   }
 
   ComPtr<IWICBitmap> bitmap;
-  hr = factory->CreateBitmapFromMemory(src_width, src_height, GUID_WICPixelFormat32bppBGRA, src_stride, current_len,
+  // MFVideoFormat_RGB32 is BGRX in memory on Windows; treating it as BGRA can
+  // produce fully transparent thumbnails when alpha is zeroed.
+  hr = factory->CreateBitmapFromMemory(src_width, src_height, GUID_WICPixelFormat32bppBGR, src_stride, current_len,
                                        raw_data, &bitmap);
   media_buffer->Unlock();
   if (FAILED(hr)) {
@@ -321,7 +345,7 @@ std::optional<std::vector<uint8_t>> GenerateThumbnailData(
     return std::nullopt;
   }
 
-  WICPixelFormatGUID pixel_format = GUID_WICPixelFormat32bppBGRA;
+  WICPixelFormatGUID pixel_format = GUID_WICPixelFormat24bppBGR;
   hr = frame->SetPixelFormat(&pixel_format);
   if (FAILED(hr)) {
     *error_message = "Cannot set pixel format: " + HResultToString(hr);
