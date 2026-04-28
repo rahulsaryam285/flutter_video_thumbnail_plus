@@ -44,7 +44,7 @@ Add the following dependency to your `pubspec.yaml` file:
 
 ```yaml
 dependencies:
-  flutter_video_thumbnail_plus: ^1.0.1
+  flutter_video_thumbnail_plus: ^1.0.6
 ```
 
 Then, run `flutter pub get` to install the plugin.

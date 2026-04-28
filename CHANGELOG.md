@@ -1,3 +1,12 @@
+## 1.0.6
+
+- Added macOS support.
+- Added Windows support.
+- Improved web compatibility and removed deprecated usage.
+- Improved the macOS example app experience and file picking flow.
+- Better error handling for unsupported video files on macOS.
+- Improved test coverage and updated package documentation.
+
 ## 1.0.5
 
 - Update the point.
