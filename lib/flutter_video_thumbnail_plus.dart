@@ -16,7 +16,7 @@ export 'enum.dart';
 ///
 /// Note that this class uses platform-specific implementations to generate thumbnails, which ensures optimal performance and compatibility.
 class FlutterVideoThumbnailPlus {
-  FlutterVideoThumbnailPlus._();
+  FlutterVideoThumbnailPlus._(); // coverage:ignore-line
 
   static FlutterVideoThumbnailPlusPlatform get _instance =>
       FlutterVideoThumbnailPlusPlatform.instance;

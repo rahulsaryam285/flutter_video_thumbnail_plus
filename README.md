@@ -19,6 +19,23 @@ This plugin provides a simple and efficient way to generate thumbnails from vide
 - Platform-specific implementations for optimal performance and compatibility
 - Get thumbnail as a file path or `Uint8List`.
 
+## Platform support
+
+| Platform | `thumbnailFile` | `thumbnailData` | `thumbnailDataWeb` |
+|---|---|---|---|
+| Android | Yes | Yes | No |
+| iOS | Yes | Yes | No |
+| macOS | Yes | Yes | No |
+| Windows | Yes | Yes | No |
+| Web | No | No | Yes |
+
+### Windows notes
+
+- Uses a native MethodChannel implementation, same API contract as Android/iOS/macOS.
+- Thumbnail extraction uses Media Foundation and image encoding uses WIC.
+- `ImageFormat.webp` currently falls back to PNG on Windows for compatibility.
+- If `thumbnailPath` is not provided, output is written to the OS temp directory.
+
 ## Usage
 
 ### Add the plugin to your Flutter project
@@ -27,7 +44,7 @@ Add the following dependency to your `pubspec.yaml` file:
 
 ```yaml
 dependencies:
-  flutter_video_thumbnail_plus: ^1.0.1
+  flutter_video_thumbnail_plus: ^1.0.6
 ```
 
 Then, run `flutter pub get` to install the plugin.
