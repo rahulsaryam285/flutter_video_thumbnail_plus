@@ -1,3 +1,14 @@
+## 1.0.7
+
+- Added official Swift Package Manager (SPM) support for iOS and macOS.
+- Added `Package.swift` configurations for iOS and macOS.
+- Updated native source structure to support SPM.
+- Preserved CocoaPods support for backward compatibility.
+- Updated CocoaPods podspec source paths for the new native structure.
+- Preserved existing Dart APIs and plugin behavior.
+- Improved SPM resource and privacy manifest handling where applicable.
+- Updated documentation with Swift Package Manager integration details.
+
 ## 1.0.6
 
 - Added macOS support.
