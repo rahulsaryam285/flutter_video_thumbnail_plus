@@ -52,9 +52,12 @@ class _MyAppState extends State<MyApp> {
         }
       } else {
         final file = await ImagePicker().pickVideo(source: ImageSource.gallery);
+        if (file == null || file.path.isEmpty) {
+          return;
+        }
         thumbnail = await FlutterVideoThumbnailPlus.thumbnailFile(
-          video: file?.path ?? '',
-          imageFormat: ImageFormat.png,
+          video: file.path,
+          imageFormat: ImageFormat.jpeg,
         );
       }
     } catch (error) {
@@ -91,12 +94,14 @@ class _MyAppState extends State<MyApp> {
                           ? Text('Click to get thumbnail')
                           : Text('Running on: \n$thumbnail'),
                     ),
-                    if (thumbnail != null && !kIsWeb) ...[
+                    if (thumbnail != null &&
+                        !kIsWeb &&
+                        File(thumbnail!).existsSync()) ...[
                       SizedBox(
                         height: MediaQuery.of(context).size.height * 0.5,
                         width: MediaQuery.of(context).size.width * 0.5,
                         child: Image.file(
-                          File(thumbnail ?? ''),
+                          File(thumbnail!),
                         ),
                       ),
                     ] else if (thumbanilBytes != null) ...[
