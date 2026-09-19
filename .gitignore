@@ -62,3 +62,8 @@ macos/Flutter/ephemeral/.plugin_symlinks/
 
 # Logs
 *.log
+
+# Swift Package Manager
+.build/
+.swiftpm/
+!.gitkeep

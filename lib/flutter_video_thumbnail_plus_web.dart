@@ -37,7 +37,7 @@ class FlutterVideoThumbnailPlusWeb extends FlutterVideoThumbnailPlusPlatform {
         ..style.display = 'none';
 
       videoElement.play();
-      return Future.delayed(
+      return await Future.delayed(
         const Duration(seconds: 1),
         () async {
           videoElement.pause();

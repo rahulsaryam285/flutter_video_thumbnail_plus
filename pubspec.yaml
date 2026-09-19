@@ -3,7 +3,7 @@ description: A Flutter plugin for generating video thumbnails from video files,
   URLs, and byte arrays with support for multiple image formats and
   customization options.
 
-version: 1.0.6
+version: 1.0.7
 
 homepage: https://github.com/rahulsaryam285/flutter_video_thumbnail_plus
 repository: https://github.com/rahulsaryam285/flutter_video_thumbnail_plus

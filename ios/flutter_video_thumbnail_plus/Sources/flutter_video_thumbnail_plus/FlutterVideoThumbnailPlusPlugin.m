@@ -1,4 +1,4 @@
-#import "FlutterVideoThumbnailPlusPlugin.h"
+#import "./include/flutter_video_thumbnail_plus/FlutterVideoThumbnailPlusPlugin.h"
 #import <AVFoundation/AVFoundation.h>
 #import <UIKit/UIKit.h>
 
@@ -78,13 +78,10 @@
                                                 details:error.localizedDescription] );
                 } else result( [FlutterError errorWithCode:@"IO Error" message:@"Failed to write data to file" details:nil] );
             } else {
-                NSString *fullpath = [thumbnail absoluteString];
-                if([fullpath hasPrefix:@"file://"]) {
-                    result([fullpath substringFromIndex:7]);
-                }
-                else {
-                    result(fullpath);
-                }
+                // Use the filesystem path (not absoluteString) so spaces and other
+                // characters are not percent-encoded (e.g. "%20"), which breaks
+                // Dart File / Image.file consumers.
+                result([thumbnail path]);
             }
         });
         

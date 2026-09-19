@@ -29,6 +29,17 @@ This plugin provides a simple and efficient way to generate thumbnails from vide
 | Windows | Yes | Yes | No |
 | Web | No | No | Yes |
 
+### iOS / macOS dependency managers
+
+Added official Swift Package Manager support for iOS and macOS while retaining CocoaPods compatibility.
+
+| Platform | Swift Package Manager | CocoaPods |
+|---|---|---|
+| iOS | Yes | Yes |
+| macOS | Yes | Yes |
+
+Flutter apps can use either dependency manager. No Dart API changes are required when upgrading.
+
 ### Windows notes
 
 - Uses a native MethodChannel implementation, same API contract as Android/iOS/macOS.
@@ -44,7 +55,7 @@ Add the following dependency to your `pubspec.yaml` file:
 
 ```yaml
 dependencies:
-  flutter_video_thumbnail_plus: ^1.0.6
+  flutter_video_thumbnail_plus: ^1.0.7
 ```
 
 Then, run `flutter pub get` to install the plugin.
