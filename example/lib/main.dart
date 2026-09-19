@@ -106,11 +106,11 @@ class _MyAppState extends State<MyApp> {
                       ),
                     ] else if (thumbanilBytes != null) ...[
                       SizedBox(
-                        height: MediaQuery.of(context).size.height * 0.5,
-                        width: MediaQuery.of(context).size.width * 0.5,
-                        child: Image.memory(
-                        thumbanilBytes ?? Uint8List(0),
-                      )),
+                          height: MediaQuery.of(context).size.height * 0.5,
+                          width: MediaQuery.of(context).size.width * 0.5,
+                          child: Image.memory(
+                            thumbanilBytes ?? Uint8List(0),
+                          )),
                     ],
                     if (thumbanilBytes != null || thumbnail != null) ...[
                       SizedBox(height: 10),
